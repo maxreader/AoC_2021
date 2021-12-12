@@ -15,6 +15,13 @@ while line != "":
     elif y1 == y2:
         for x in range(min(x1, x2), max(x1, x2)+1):
             vents[x][y1] += 1
+    else:
+        dx = 1 if (x2 > x1) else -1
+        dy = 1 if (y2 > y1) else -1
+
+        for k in range(1+abs(x2-x1)):
+            vents[x1+dx*k][y1+dy*k] += 1
+
     line = input.readline()
 
 count = np.count_nonzero(vents > 1)
